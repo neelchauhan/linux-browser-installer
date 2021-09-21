@@ -122,12 +122,8 @@ install_chrome()
 	echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ " \
 	     "stable main" > \
 		"${chroot_path}/etc/apt/sources.list.d/google-chrome.list"
-	fetch -o ${chroot_path} \
-		https://dl.google.com/linux/linux_signing_key.pub || exit 1
-	chroot ${chroot_path} /bin/bash -c "apt-key add linux_signing_key.pub" || \
-		bail "'apt-key add linux_signing_key.pub' failed"
-	chroot ${chroot_path} /bin/bash -c "apt update"
-	chroot ${chroot_path} /bin/bash -c "apt install -y google-chrome-stable" || \
+	chroot ${chroot_path} /bin/bash -c "apt update --allow-insecure-repositories"
+	chroot ${chroot_path} /bin/bash -c "apt install --allow-unauthenticated -y google-chrome-stable" || \
 		bail "'apt install -y google-chrome-stable' failed"
 	[ -d "${chroot_path}/${prefix}/share/fonts" ] && \
 		rmdir "${chroot_path}/${prefix}/share/fonts"
@@ -186,12 +182,8 @@ install_vivaldi()
 	echo "deb [arch=amd64] https://repo.vivaldi.com/archive/deb/ " \
 	     "stable main" > \
 		"${chroot_path}/etc/apt/sources.list.d/vivaldi.list"
-	fetch -o ${chroot_path} \
-		https://repo.vivaldi.com/archive/linux_signing_key.pub || exit 1
-	chroot ${chroot_path} /bin/bash -c "apt-key add linux_signing_key.pub" || \
-		bail "'apt-key add linux_signing_key.pub' failed"
-	chroot ${chroot_path} /bin/bash -c "apt update"
-	chroot ${chroot_path} /bin/bash -c "apt install -y vivaldi-stable" || \
+	chroot ${chroot_path} /bin/bash -c "apt update --allow-insecure-repositories"
+	chroot ${chroot_path} /bin/bash -c "apt install --allow-unauthenticated -y vivaldi-stable" || \
 		bail "'apt install -y vivaldi-stable' failed"
 	[ -d "${chroot_path}/${prefix}/share/fonts" ] && \
 		rmdir "${chroot_path}/${prefix}/share/fonts"
