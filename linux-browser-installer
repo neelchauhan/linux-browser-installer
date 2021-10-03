@@ -179,7 +179,7 @@ install_vivaldi()
 		echo "Vivaldi already installed" >&2
 		exit 1
 	fi
-	echo "deb [arch=amd64] https://repo.vivaldi.com/archive/deb/ " \
+	echo "deb [arch=amd64] http://repo.vivaldi.com/archive/deb/ " \
 	     "stable main" > \
 		"${chroot_path}/etc/apt/sources.list.d/vivaldi.list"
 	chroot ${chroot_path} /bin/bash -c "apt update --allow-insecure-repositories"
