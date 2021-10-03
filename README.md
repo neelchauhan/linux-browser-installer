@@ -11,9 +11,18 @@ If not defined otherwise, Ubuntu Focal (`$ubuntu_version`) is installed under
 (`rc.d/ubuntu`) is used to start the *linuxulator*, and to mount the chroot's
 filesystems.
 
+This is a forked version to unbreak 14.0-CURRENT.
+
+**WARNING:** Due to a segfault with `gpg` on 14, package verification is
+disabled. This is **not** very secure and you should keep this in mind if you
+want to use this repository.
+
+Vivaldi also has to download via HTTP because of the Let's Encrypt certificate
+encryption fiasco.
+
 ### System requirements
 
-FreeBSD 12.2-RELEASE or 13-CURRENT
+FreeBSD 12.2-RELEASE or higher
 
 ### Please Note
 
