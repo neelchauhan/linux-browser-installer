@@ -72,6 +72,7 @@ install_steam_utils()
 	pkg info --exists linux-steam-utils && return
 	pkg fetch -y -o /tmp linux-steam-utils || exit 1
 
+	rm -r /tmp/All/linux-steam-utils-*.pkg
 	pkgpath=/tmp/All/linux-steam-utils-*.pkg
 	[ ! -f ${pkgpath} ] && pkgpath=/tmp/All/linux-steam-utils-*.txz
 	[ ! -f ${pkgpath} ] && exit 1
